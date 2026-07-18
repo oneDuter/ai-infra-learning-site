@@ -265,7 +265,7 @@ function updateMetrics() {
   $("#nextWeekTitle").textContent = next.title;
   $("#nextWeekOutcome").textContent = next.outcome;
   $("#progressSummary").textContent = completedTasks === 0 ? "点击任意任务查看材料，完成后进度自动保存在当前浏览器。" : `已经完成 ${completedTasks} 项任务。下一步：${next.title}。`;
-  $("#storageStatus").textContent = storageAvailable ? "本地保存可用" : "仅当前页面有效";
+  $("#storageStatus").textContent = storageAvailable ? "交互已就绪 · 本地保存可用" : "交互已就绪 · 仅当前页面有效";
   $("#jumpToCurrent").onclick = () => $(`[data-week-card='${next.week}']`)?.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
