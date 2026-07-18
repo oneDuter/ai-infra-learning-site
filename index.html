@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11130f" />
+    <meta name="description" content="AI 系统与大模型基础设施的 16 周学习路线、章节映射与进度追踪。" />
+    <title>AI Infra Learning · 学习驾驶舱</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#roadmap">跳到学习路线</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">AI</span>
+        <span><strong>Infra Learning</strong><small>系统 · 架构 · 实践</small></span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#roadmap">路线</a><a href="#mapping">映射</a><a href="#method">方法</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="切换深浅主题"><span aria-hidden="true">◐</span></button>
+        <a class="button button-ghost" href="https://github.com/oneDuter/AIInfra" target="_blank" rel="noreferrer">个人 Fork ↗</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">AI SYSTEMS · 16 WEEK FIELD GUIDE</p>
+          <h1 id="hero-title">从一颗芯片，走到<br /><em>万卡集群。</em></h1>
+          <p class="hero-intro">以《AI 系统：原理与架构》建立底层认知，以 AIInfra 补齐大模型工程。每周完成一次“读、看、做、写、测”闭环。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#roadmap">开始学习</a>
+            <a class="text-link" href="https://github.com/Infrasys-AI/AIInfra" target="_blank" rel="noreferrer">查看上游课程 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="学习概览">
+          <div class="progress-orbit" id="progressOrbit" style="--progress: 0"><div><strong id="progressPercent">0%</strong><span>总体进度</span></div></div>
+          <div class="hero-stats">
+            <div><strong>911</strong><span>书籍页数</span></div><div><strong>23</strong><span>核心章节</span></div><div><strong>16</strong><span>计划周数</span></div>
+          </div>
+          <div class="current-focus"><span class="status-dot"></span><div><small>当前焦点</small><strong id="currentFocus">第 1 周 · AI 系统全栈</strong></div></div>
+        </aside>
+      </section>
+
+      <section class="ticker" aria-label="核心主题"><div><span>HARDWARE</span><i>◆</i><span>COMPILER</span><i>◆</i><span>RUNTIME</span><i>◆</i><span>TRAINING</span><i>◆</i><span>INFERENCE</span><i>◆</i><span>DISTRIBUTED</span></div></section>
+
+      <section class="dashboard shell" aria-labelledby="dashboard-title">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">TODAY'S CONTROL PANEL</p><h2 id="dashboard-title">今天，从一个可交付开始。</h2></div>
+          <p id="progressSummary">完成任意一项任务，进度会自动保存在当前浏览器。</p>
+        </div>
+        <div class="dashboard-grid">
+          <article class="focus-card">
+            <div class="card-kicker">NEXT ACTION</div><span class="week-badge" id="nextWeekBadge">WEEK 01</span>
+            <h3 id="nextWeekTitle">AI 系统全栈</h3><p id="nextWeekOutcome">画出芯片、编译器、框架、训练与推理的全栈关系。</p>
+            <button class="button button-dark" id="jumpToCurrent" type="button">查看本周任务 ↓</button>
+          </article>
+          <article class="metric-card">
+            <div class="card-kicker">LEARNING SIGNALS</div>
+            <div class="metric-row"><span>已完成周数</span><strong id="completedWeeks">0 / 16</strong></div>
+            <div class="metric-row"><span>已完成任务</span><strong id="completedTasks">0 / 80</strong></div>
+            <div class="metric-row"><span>当前阶段</span><strong id="currentStage">建立全景</strong></div>
+            <div class="mini-bar" aria-hidden="true"><span id="miniBar"></span></div>
+          </article>
+          <article class="data-card">
+            <div class="card-kicker">LOCAL DATA</div><h3>你的进度，只留在设备上。</h3>
+            <p>无需账号或服务器。可导出 JSON 备份，也可在另一台设备导入。</p>
+            <div class="data-actions">
+              <button class="text-button" id="exportProgress" type="button">导出进度</button>
+              <label class="text-button" for="importProgress">导入进度</label><input id="importProgress" type="file" accept="application/json" hidden />
+              <button class="text-button danger" id="resetProgress" type="button">清空</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="roadmap shell" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE 16-WEEK ROADMAP</p><h2 id="roadmap-title">把复杂系统，拆成十六次抵达。</h2></div>
+          <div class="filters" role="group" aria-label="学习阶段筛选">
+            <button class="filter is-active" type="button" data-filter="all">全部</button><button class="filter" type="button" data-filter="foundation">基础</button><button class="filter" type="button" data-filter="compiler">编译</button><button class="filter" type="button" data-filter="inference">推理</button><button class="filter" type="button" data-filter="framework">框架</button>
+          </div>
+        </div>
+        <div class="roadmap-list" id="roadmapList"></div>
+      </section>
+
+      <section class="mapping shell" id="mapping" aria-labelledby="mapping-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">BOOK × OPEN COURSE</p><h2 id="mapping-title">一本书打地基，一个仓库向上生长。</h2></div><p>左侧解决“为什么”，右侧持续回答“如何落地与扩展”。</p>
+        </div>
+        <div class="mapping-table" role="table" aria-label="书籍和 AIInfra 内容对应关系">
+          <div class="mapping-row mapping-header" role="row"><span role="columnheader">书籍章节</span><span role="columnheader">系统主题</span><span role="columnheader">AIInfra 补充</span></div>
+          <div class="mapping-row" role="row"><span role="cell">01–02</span><strong role="cell">系统全景与性能</strong><span role="cell">00Summary · 01AICluster</span></div>
+          <div class="mapping-row" role="row"><span role="cell">03–07</span><strong role="cell">芯片、互联与集群</strong><span role="cell">01AICluster · 02StorComm</span></div>
+          <div class="mapping-row" role="row"><span role="cell">08–13</span><strong role="cell">编译、IR 与算子</strong><span role="cell">04Train / TrainAcceler</span></div>
+          <div class="mapping-row" role="row"><span role="cell">14–19</span><strong role="cell">推理、量化与 Kernel</strong><span role="cell">05Infer</span></div>
+          <div class="mapping-row" role="row"><span role="cell">20–23</span><strong role="cell">框架、计算图与并行</strong><span role="cell">04Train · 06AlgoData</span></div>
+        </div>
+      </section>
+
+      <section class="method shell" id="method" aria-labelledby="method-title">
+        <div class="method-intro"><p class="eyebrow">THE WEEKLY LOOP</p><h2 id="method-title">不是“看完”，<br />而是完成闭环。</h2><p>每周都要留下一个可以复查、运行或讲给别人听的成果。</p></div>
+        <ol class="method-steps">
+          <li><span>01</span><div><strong>读</strong><p>精读书籍，标记核心概念。</p></div></li><li><span>02</span><div><strong>看</strong><p>用 AIInfra 补齐工程现场。</p></div></li><li><span>03</span><div><strong>做</strong><p>完成最小实验或性能估算。</p></div></li><li><span>04</span><div><strong>写</strong><p>沉淀结构化笔记与结论。</p></div></li><li><span>05</span><div><strong>测</strong><p>五问自测，暴露认知缺口。</p></div></li>
+        </ol>
+      </section>
+
+      <section class="closing shell"><div><p class="eyebrow">READY WHEN YOU ARE</p><h2>系统很大。<br />今天先走一格。</h2></div><a class="button button-primary" href="#roadmap">打开第一个任务</a></section>
+    </main>
+
+    <footer class="site-footer shell"><p>AI Infra Learning · Personal Study Console</p><p>内容来源于个人学习计划与 <a href="https://github.com/Infrasys-AI/AIInfra">AIInfra</a></p></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
