@@ -1,5 +1,5 @@
 const forkBase = "https://github.com/oneDuter/AIInfra";
-const bookBase = "https://github.com/oneDuter/ai-infra-learning-site/releases/download/book-v1/AI%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E7%90%86%E4%B8%8E%E6%9E%B6%E6%9E%84.pdf";
+const bookBase = "https://github.com/oneDuter/ai-infra-learning-site/releases/download/book-v1/AI-Systems-Principles-and-Architecture.pdf";
 
 const weeks = [
   {
