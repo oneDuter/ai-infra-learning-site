@@ -1,6 +1,4 @@
 const forkBase = "https://github.com/oneDuter/AIInfra";
-const bookBase = "https://github.com/oneDuter/ai-infra-learning-site/releases/download/book-v1/AI-Systems-Principles-and-Architecture.pdf";
-
 const weeks = [
   {
     week: 1, stage: "建立全景", group: "foundation", title: "AI 系统全栈", book: "书籍第 1 章", bookPage: 12, bookPages: "PDF 12–46 页", reading: "AIInfra 00Summary", outcome: "画出芯片、编译器、框架、训练与推理的全栈关系。",
@@ -101,14 +99,14 @@ const weeks = [
     quiz: ["数据并行的主要通信是什么？", "张量并行为何依赖高速互联？", "流水并行气泡如何产生？", "ZeRO 各阶段分别切分什么？", "MoE 的专家并行增加了什么通信？"]
   },
   {
-    week: 15, stage: "综合项目", group: "framework", title: "大模型专项补全", book: "回顾书籍薄弱覆盖部分", bookPage: 9, bookPages: "从 PDF 目录第 9 页回查", reading: "存储、云平台、MoE", outcome: "整理至少 20 个书籍之外的大模型工程知识点。",
+    week: 15, stage: "综合项目", group: "framework", title: "大模型专项补全", book: "回顾书籍薄弱覆盖部分", bookPage: 1, bookPages: "全书目录索引（3 页）", reading: "存储、云平台、MoE", outcome: "整理至少 20 个书籍之外的大模型工程知识点。",
     infra: [["AI 集群存储", "02StorComm/05StorforAI"], ["容器与云平台", "03DockCloud"], ["训练加速", "04Train/03TrainAcceler"], ["MoE", "06AlgoData/02MoE"]],
     experiment: "从存储、容器调度、可观测性、MoE 和长序列中选择两项，画出工程链路并解释故障与性能风险。",
     deliverable: "不少于 20 项的书籍 × AIInfra 差异清单 + 两张工程链路图。",
     quiz: ["Checkpoint 为什么会形成存储突发流量？", "Kubernetes 调度 AI 任务面临哪些拓扑约束？", "MoE 为什么需要 All-to-All？", "长序列训练怎样改变显存和通信？", "可观测性应覆盖哪些训练系统信号？"]
   },
   {
-    week: 16, stage: "综合项目", group: "framework", title: "综合项目", book: "全书与知识地图复盘", bookPage: 9, bookPages: "PDF 9–873 页按需复盘", reading: "选择相关 AIInfra 模块", outcome: "交付可运行代码、实验数据、图表与 2000 字复盘。",
+    week: 16, stage: "综合项目", group: "framework", title: "综合项目", book: "全书与知识地图复盘", bookPage: 1, bookPages: "全书目录索引（3 页）", reading: "选择相关 AIInfra 模块", outcome: "交付可运行代码、实验数据、图表与 2000 字复盘。",
     infra: [["AIInfra 总览", "00Summary"], ["训练系统", "04Train"], ["推理系统", "05Infer"]],
     experiment: "从 Transformer 性能模型、推理优化报告、分布式策略设计中选择一个，完成可复现的端到端项目。",
     deliverable: "代码、环境说明、原始数据、图表、结论、失败记录和不少于 2000 字复盘。",
@@ -156,8 +154,8 @@ function infraUrl(path) {
   return `${forkBase}/${route}/main/${path.split("/").map(encodeURIComponent).join("/")}`;
 }
 
-function bookUrl(page) {
-  return `${bookBase}#page=${page}`;
+function bookUrl(week) {
+  return `./reader.html?week=${week}`;
 }
 
 function renderRoadmap() {
@@ -178,7 +176,7 @@ function renderRoadmap() {
 
 function getTaskDetail(item, taskIndex) {
   const common = { label: taskLabels[taskIndex], context: `第 ${item.week} 周 · ${item.stage} · ${item.title}` };
-  if (taskIndex === 0) return { ...common, title: `精读：${item.book}`, description: `阅读范围：${item.bookPages}。围绕“${item.outcome}”精读本周书籍内容。`, links: [{ label: "打开《AI 系统：原理与架构》PDF", meta: `${item.book} · ${item.bookPages}`, url: bookUrl(item.bookPage) }], items: ["从本周起始页进入 PDF，并按目录完成对应章节", "标记至少 3 个核心概念", "记录 2 个关键权衡", "写下 1 个仍需验证的问题"], deliverable: "在笔记中留下章节摘要、概念关系、页码引用与疑问。" };
+  if (taskIndex === 0) return { ...common, title: `精读：${item.book}`, description: `阅读范围：${item.bookPages}。围绕“${item.outcome}”精读本周书籍内容。`, links: [{ label: "站内在线预览本周 PDF", meta: `${item.book} · ${item.bookPages}`, url: bookUrl(item.week) }], items: ["在站内阅读器中完成本周 PDF", "标记至少 3 个核心概念", "记录 2 个关键权衡", "写下 1 个仍需验证的问题"], deliverable: "在笔记中留下章节摘要、概念关系、页码引用与疑问。" };
   if (taskIndex === 1) return { ...common, title: `研读 AIInfra：${item.reading}`, description: "从个人 Fork 阅读对应工程材料，把书中的稳定原理映射到大模型系统实践。", links: item.infra, items: ["先看目录和学习目标", "记录书籍没有覆盖的工程细节", "比较两份材料的假设和适用边界"], deliverable: "至少补充 5 条 AIInfra 工程知识点。" };
   if (taskIndex === 2) return { ...common, title: "完成最小可复现实验", description: item.experiment, items: ["记录软硬件环境与版本", "保存输入、命令、输出和原始指标", "记录失败尝试，不只保留成功结果"], deliverable: item.deliverable };
   if (taskIndex === 3) return { ...common, title: "沉淀结构化学习笔记", description: `围绕“${item.title}”把原理、工程实践和实验结果组织成可复查的笔记。`, items: ["核心概念：至少 3 项", "关键权衡：至少 2 项", "实验结论与证据", "失败记录与下一步问题"], deliverable: `建议交付：${item.deliverable}` };

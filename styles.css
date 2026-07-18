@@ -210,6 +210,19 @@ body.drawer-open { overflow: hidden; }
 .toast { position: fixed; right: 24px; bottom: 24px; z-index: 50; max-width: min(360px, calc(100vw - 48px)); padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 180ms ease, transform 180ms ease; font-size: 12px; }
 .toast.is-visible { opacity: 1; transform: translateY(0); }
 
+.reader-page { min-height: 100vh; background: var(--bg); }
+.reader-header { display: flex; align-items: center; justify-content: space-between; min-height: 76px; border-bottom: 1px solid var(--line); }
+.reader-main { padding-block: 38px 50px; }
+.reader-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 24px; }
+.reader-heading h1 { margin: 6px 0 10px; font-size: clamp(38px, 6vw, 68px); letter-spacing: -0.055em; line-height: 0.98; }
+.reader-heading p:last-child { margin: 0; color: var(--muted); }
+.reader-select-label { display: grid; gap: 8px; min-width: min(320px, 100%); color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; }
+.reader-select-label select { width: 100%; min-height: 46px; padding: 0 40px 0 14px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); color: var(--text); font: inherit; letter-spacing: 0; }
+.reader-frame-wrap { height: calc(100vh - 270px); min-height: 620px; border: 1px solid var(--line-strong); border-radius: 18px; background: #fff; box-shadow: var(--shadow); overflow: hidden; }
+.reader-frame-wrap iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+.reader-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; }
+.reader-nav [aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
+
 @media (max-width: 960px) {
   .site-header { grid-template-columns: 1fr auto; }
   .site-nav { display: none; }
@@ -248,6 +261,12 @@ body.drawer-open { overflow: hidden; }
   .task-sheet-header { padding: 18px 20px; }
   .task-sheet-content { padding: 30px 20px 42px; }
   .task-sheet-footer { padding: 16px 20px 20px; }
+  .reader-header { min-height: 66px; }
+  .reader-page .button-ghost { display: inline-flex; }
+  .reader-heading { align-items: stretch; flex-direction: column; }
+  .reader-frame-wrap { height: 72vh; min-height: 500px; border-radius: 12px; }
+  .reader-nav { align-items: stretch; flex-direction: column; }
+  .reader-nav .button, .reader-nav .text-link { justify-content: center; text-align: center; }
 }
 
 @keyframes ticker { to { transform: translateX(-38%); } }

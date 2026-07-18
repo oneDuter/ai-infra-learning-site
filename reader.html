@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="《AI 系统：原理与架构》按周在线阅读器" />
+    <title>本周 PDF · AI Infra Learning</title>
+    <link rel="stylesheet" href="./styles.css?v=20260719-24" />
+  </head>
+  <body class="reader-page">
+    <header class="reader-header shell">
+      <a class="brand" href="./#roadmap" aria-label="返回学习路线">
+        <span class="brand-mark">AI</span><span><strong>Infra Learning</strong><small>本周 PDF 阅读器</small></span>
+      </a>
+      <a class="button button-ghost" href="./#roadmap">返回学习路线</a>
+    </header>
+
+    <main class="reader-main shell">
+      <section class="reader-heading" aria-labelledby="readerTitle">
+        <div>
+          <p class="eyebrow" id="readerWeek">WEEKLY READER</p>
+          <h1 id="readerTitle">正在准备本周资料</h1>
+          <p id="readerMeta">《AI 系统：原理与架构》</p>
+        </div>
+        <label class="reader-select-label">切换学习周
+          <select id="weekSelect" aria-label="切换学习周"></select>
+        </label>
+      </section>
+
+      <section class="reader-frame-wrap" aria-label="PDF 在线预览">
+        <iframe id="pdfFrame" title="本周 PDF 在线预览"></iframe>
+      </section>
+
+      <nav class="reader-nav" aria-label="阅读周导航">
+        <a class="button button-ghost" id="previousWeek" href="#">← 上一周</a>
+        <a class="text-link" id="openPdf" href="#" target="_blank" rel="noreferrer">单独打开本周 PDF ↗</a>
+        <a class="button button-primary" id="nextWeek" href="#">下一周 →</a>
+      </nav>
+    </main>
+
+    <noscript><p class="shell">需要启用 JavaScript 才能选择本周 PDF。</p></noscript>
+    <script src="./reader.js?v=20260719-24"></script>
+  </body>
+</html>
