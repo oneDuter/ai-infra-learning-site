@@ -68,6 +68,7 @@
           <article class="data-card">
             <div class="card-kicker">LOCAL DATA</div><h3>你的进度，只留在设备上。</h3>
             <p>无需账号或服务器。可导出 JSON 备份，也可在另一台设备导入。</p>
+            <p class="storage-status"><span class="status-dot"></span><strong id="storageStatus">本地保存可用</strong></p>
             <div class="data-actions">
               <button class="text-button" id="exportProgress" type="button">导出进度</button>
               <label class="text-button" for="importProgress">导入进度</label><input id="importProgress" type="file" accept="application/json" hidden />
@@ -79,7 +80,7 @@
 
       <section class="roadmap shell" id="roadmap" aria-labelledby="roadmap-title">
         <div class="section-heading">
-          <div><p class="eyebrow">THE 16-WEEK ROADMAP</p><h2 id="roadmap-title">把复杂系统，拆成十六次抵达。</h2></div>
+          <div><p class="eyebrow">THE 16-WEEK ROADMAP</p><h2 id="roadmap-title">把复杂系统，拆成十六次抵达。</h2><p class="roadmap-hint">点击“读、看、做、写、测”打开具体材料；在详情中标记完成。</p></div>
           <div class="filters" role="group" aria-label="学习阶段筛选">
             <button class="filter is-active" type="button" data-filter="all">全部</button><button class="filter" type="button" data-filter="foundation">基础</button><button class="filter" type="button" data-filter="compiler">编译</button><button class="filter" type="button" data-filter="inference">推理</button><button class="filter" type="button" data-filter="framework">框架</button>
           </div>
@@ -112,6 +113,27 @@
     </main>
 
     <footer class="site-footer shell"><p>AI Infra Learning · Personal Study Console</p><p>内容来源于个人学习计划与 <a href="https://github.com/Infrasys-AI/AIInfra">AIInfra</a></p></footer>
+    <div class="task-drawer" id="taskDrawer" hidden aria-hidden="true">
+      <button class="task-backdrop" id="taskBackdrop" type="button" aria-label="关闭任务详情"></button>
+      <aside class="task-sheet" role="dialog" aria-modal="true" aria-labelledby="taskTitle">
+        <div class="task-sheet-header">
+          <p class="eyebrow" id="taskEyebrow">任务详情</p>
+          <button class="icon-button" id="closeTaskDrawer" type="button" aria-label="关闭任务详情">×</button>
+        </div>
+        <div class="task-sheet-content">
+          <h2 id="taskTitle">任务详情</h2>
+          <p class="task-description" id="taskDescription"></p>
+          <div class="task-links" id="taskLinks" hidden></div>
+          <ul class="task-checklist" id="taskChecklist" hidden></ul>
+          <ol class="task-quiz" id="taskQuiz" hidden></ol>
+          <div class="task-deliverable"><span>本项交付</span><p id="taskDeliverable"></p></div>
+        </div>
+        <div class="task-sheet-footer">
+          <button class="button button-primary task-complete-button" id="toggleTaskComplete" type="button" aria-pressed="false">标记为已完成</button>
+          <small>完成状态仅保存在当前浏览器，可随时导出备份。</small>
+        </div>
+      </aside>
+    </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="./app.js"></script>
   </body>
