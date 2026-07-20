@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="《AI 系统：原理与架构》按周在线阅读器" />
     <title>本周 PDF · AI Infra Learning</title>
-    <link rel="stylesheet" href="./styles.css?v=20260719-24" />
+    <link rel="stylesheet" href="./styles.css?v=20260720-25" />
   </head>
   <body class="reader-page">
     <header class="reader-header shell">
@@ -27,8 +27,41 @@
         </label>
       </section>
 
-      <section class="reader-frame-wrap" aria-label="PDF 在线预览">
-        <iframe id="pdfFrame" title="本周 PDF 在线预览"></iframe>
+      <section class="reader-workspace">
+        <div class="pdf-reader-panel">
+          <div class="pdf-toolbar" aria-label="PDF 阅读控制">
+            <div class="pdf-status-wrap"><span class="status-dot" aria-hidden="true"></span><span id="pdfStatus">正在解析 PDF…</span></div>
+            <div class="pdf-page-controls">
+              <button class="icon-button" id="previousPage" type="button" aria-label="上一页">←</button>
+              <label><span class="sr-only">当前页</span><input id="pageInput" type="number" min="1" value="1" inputmode="numeric" /></label>
+              <span id="pageTotal">/ —</span>
+              <button class="icon-button" id="nextPage" type="button" aria-label="下一页">→</button>
+            </div>
+            <div class="pdf-zoom-controls">
+              <button class="icon-button" id="zoomOut" type="button" aria-label="缩小">−</button>
+              <button class="zoom-label" id="resetZoom" type="button" aria-label="恢复适合宽度">适宽</button>
+              <button class="icon-button" id="zoomIn" type="button" aria-label="放大">＋</button>
+            </div>
+          </div>
+          <div class="pdf-stage" id="pdfStage" tabindex="0" aria-label="自动适应宽度的 PDF 页面">
+            <div class="pdf-loading" id="pdfLoading"><span></span><p>正在解析本周 PDF…</p></div>
+            <canvas id="pdfCanvas" aria-label="PDF 当前页"></canvas>
+          </div>
+        </div>
+
+        <aside class="comment-panel" aria-labelledby="commentTitle">
+          <div class="comment-heading">
+            <div><p class="eyebrow">PAGE NOTES</p><h2 id="commentTitle">阅读批注</h2></div>
+            <span id="commentCount">0 条</span>
+          </div>
+          <form class="comment-form" id="commentForm">
+            <label for="commentInput">记录本页想法</label>
+            <textarea id="commentInput" rows="5" maxlength="1200" placeholder="写下疑问、结论或与 AIInfra 的对应关系…" required></textarea>
+            <div><span>关联本周 PDF 第 <strong id="commentPage">1</strong> 页</span><button class="button button-primary" type="submit">添加批注</button></div>
+          </form>
+          <div class="comment-list" id="commentList" aria-live="polite"></div>
+          <p class="comment-storage-note" id="commentStorageNote">批注仅保存在当前浏览器，不会公开。</p>
+        </aside>
       </section>
 
       <nav class="reader-nav" aria-label="阅读周导航">
@@ -39,6 +72,6 @@
     </main>
 
     <noscript><p class="shell">需要启用 JavaScript 才能选择本周 PDF。</p></noscript>
-    <script src="./reader.js?v=20260719-24"></script>
+    <script type="module" src="./reader.js?v=20260720-25"></script>
   </body>
 </html>
