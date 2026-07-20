@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="《AI 系统：原理与架构》按周在线阅读器" />
     <title>本周 PDF · AI Infra Learning</title>
-    <link rel="stylesheet" href="./styles.css?v=20260720-25" />
+    <link rel="stylesheet" href="./styles.css?v=20260720-26" />
   </head>
   <body class="reader-page">
     <header class="reader-header shell">
@@ -49,19 +49,31 @@
           </div>
         </div>
 
-        <aside class="comment-panel" aria-labelledby="commentTitle">
-          <div class="comment-heading">
-            <div><p class="eyebrow">PAGE NOTES</p><h2 id="commentTitle">阅读批注</h2></div>
-            <span id="commentCount">0 条</span>
-          </div>
-          <form class="comment-form" id="commentForm">
-            <label for="commentInput">记录本页想法</label>
-            <textarea id="commentInput" rows="5" maxlength="1200" placeholder="写下疑问、结论或与 AIInfra 的对应关系…" required></textarea>
-            <div><span>关联本周 PDF 第 <strong id="commentPage">1</strong> 页</span><button class="button button-primary" type="submit">添加批注</button></div>
-          </form>
-          <div class="comment-list" id="commentList" aria-live="polite"></div>
-          <p class="comment-storage-note" id="commentStorageNote">批注仅保存在当前浏览器，不会公开。</p>
-        </aside>
+        <div class="reader-sidebar">
+          <aside class="infra-panel" aria-labelledby="infraTitle">
+            <div class="infra-heading">
+              <div><p class="eyebrow">BOOK × FORK</p><h2 id="infraTitle">本周 AIInfra 补充</h2></div>
+              <span id="infraCount">0 项</span>
+            </div>
+            <p class="infra-intro">书籍负责原理和体系，个人 Fork 补充工程实现。建议按“读 PDF → 看仓库 → 写批注”完成闭环。</p>
+            <div class="reader-infra-links" id="infraLinks"></div>
+            <a class="infra-fork-link" href="https://github.com/oneDuter/AIInfra" target="_blank" rel="noreferrer">打开 oneDuter/AIInfra ↗</a>
+          </aside>
+
+          <aside class="comment-panel" aria-labelledby="commentTitle">
+            <div class="comment-heading">
+              <div><p class="eyebrow">PAGE NOTES</p><h2 id="commentTitle">阅读批注</h2></div>
+              <span id="commentCount">0 条</span>
+            </div>
+            <form class="comment-form" id="commentForm">
+              <label for="commentInput">记录本页想法</label>
+              <textarea id="commentInput" rows="5" maxlength="1200" placeholder="写下疑问、结论或与 AIInfra 的对应关系…" required></textarea>
+              <div><span>关联本周 PDF 第 <strong id="commentPage">1</strong> 页</span><button class="button button-primary" type="submit">添加批注</button></div>
+            </form>
+            <div class="comment-list" id="commentList" aria-live="polite"></div>
+            <p class="comment-storage-note" id="commentStorageNote">批注仅保存在当前浏览器，不会公开。</p>
+          </aside>
+        </div>
       </section>
 
       <nav class="reader-nav" aria-label="阅读周导航">
@@ -72,6 +84,6 @@
     </main>
 
     <noscript><p class="shell">需要启用 JavaScript 才能选择本周 PDF。</p></noscript>
-    <script type="module" src="./reader.js?v=20260720-25"></script>
+    <script type="module" src="./reader.js?v=20260720-26"></script>
   </body>
 </html>

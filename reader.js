@@ -21,6 +21,26 @@ const readingWeeks = [
   [16, "综合项目", "全书目录索引 · 3 页"],
 ];
 
+const forkBase = "https://github.com/oneDuter/AIInfra";
+const weeklyInfra = [
+  [["训练系统全栈", "00Summary/04TrainingStack.md"], ["推理系统全栈", "00Summary/05InferStack.md"], ["AI Infra 未来趋势", "00Summary/06Future.md"]],
+  [["集群性能专题", "01AICluster/04Performance"]],
+  [["AI 集群路线图", "01AICluster/01Roadmap"], ["芯片与节点基础", "01AICluster/02L0L1Base"]],
+  [["存储与通信路线图", "02StorComm/01Roadmap"], ["集合通信", "02StorComm/03CollectComm"], ["通信库", "02StorComm/04CommLibrary"]],
+  [["超节点与 SuperPod", "01AICluster/03SuperPod"]],
+  [["训练加速入口", "04Train/03TrainAcceler"]],
+  [["训练加速专题", "04Train/03TrainAcceler"]],
+  [["训练加速与算子", "04Train/03TrainAcceler"]],
+  [["推理基础", "05Infer/01Foundation"], ["推理加速", "05Infer/02InferSpeedUp"], ["调度加速", "05Infer/03SchedSpeedUp"]],
+  [["压缩与蒸馏", "05Infer/06CompDistill"]],
+  [["推理加速", "05Infer/02InferSpeedUp"], ["训练加速", "04Train/03TrainAcceler"]],
+  [["算法与模型基础", "06AlgoData/01Basic"]],
+  [["Mini Transformer 与基础", "06AlgoData/01Basic"]],
+  [["并行训练入门", "04Train/01ParallelBegin"], ["高级并行训练", "04Train/02ParallelAdv"]],
+  [["AI 集群存储", "02StorComm/05StorforAI"], ["容器与云平台", "03DockCloud"], ["训练加速", "04Train/03TrainAcceler"], ["MoE", "06AlgoData/02MoE"]],
+  [["AIInfra 总览", "00Summary"], ["训练系统", "04Train"], ["推理系统", "05Infer"]],
+];
+
 const commentStorageKey = "ai-infra-reader-comments-v1";
 const params = new URLSearchParams(window.location.search);
 const requestedWeek = Number(params.get("week"));
@@ -39,6 +59,39 @@ let comments = loadComments();
 function readerUrl(week) { return `./reader.html?week=${week}`; }
 function pdfUrl(week) { return `./books/week-${String(week).padStart(2, "0")}.pdf`; }
 function assetUrl(path) { return new URL(path, import.meta.url).href; }
+function infraUrl(path) {
+  const route = path.endsWith(".md") ? "blob" : "tree";
+  const encodedPath = path.split("/").map(encodeURIComponent).join("/");
+  return `${forkBase}/${route}/main/${encodedPath}`;
+}
+
+function setupInfraLinks() {
+  const links = weeklyInfra[activeWeek - 1] || [];
+  const container = $("#infraLinks");
+  $("#infraCount").textContent = `${links.length} 项`;
+  container.replaceChildren();
+
+  links.forEach(([label, path], index) => {
+    const anchor = document.createElement("a");
+    anchor.className = "reader-infra-link";
+    anchor.href = infraUrl(path);
+    anchor.target = "_blank";
+    anchor.rel = "noreferrer";
+
+    const number = document.createElement("span");
+    number.textContent = String(index + 1).padStart(2, "0");
+    const copy = document.createElement("span");
+    const title = document.createElement("strong");
+    title.textContent = label;
+    const location = document.createElement("small");
+    location.textContent = path;
+    copy.append(title, location);
+    const arrow = document.createElement("span");
+    arrow.textContent = "↗";
+    anchor.append(number, copy, arrow);
+    container.append(anchor);
+  });
+}
 
 function setupReaderHeader() {
   const [, title, meta] = readingWeeks[activeWeek - 1];
@@ -281,6 +334,7 @@ function setupComments() {
 }
 
 setupReaderHeader();
+setupInfraLinks();
 setupPdfControls();
 setupComments();
 loadPdf();
